@@ -1,0 +1,138 @@
+\section{Experiments and Results}
+\label{sec:experiments}
+\subsection{Evaluation Questions and Setup}
+State which claim each experiment tests. Describe the data or study
+materials, inclusion criteria, baselines, evaluation metrics, and procedure.
+Explain how comparisons are made fair and how uncertainty is assessed.
+Report actual experimental conditions instead of inventing missing details.
+
+Describe the origin and relevant properties of the evaluation material.
+Explain how development and evaluation subsets are separated, including
+any grouping needed to prevent closely related examples from appearing in
+both. State the scope of the evaluation: what variation is represented and
+which operating conditions are absent. If the study uses simulations or
+constructed examples, explain how those conditions relate to the intended
+application and where the comparison may break down.
+Cite the dataset or study-material source here~\cite{dataset}. Record the
+release, subset, and split used so that the reference identifies the resource
+and the text identifies your specific use of it.
+
+Define each evaluation metric before interpreting its values. Give its
+units, preferred direction, aggregation rule, and treatment of failed or
+missing outputs. Explain why the chosen metrics reflect the research
+question. If different metrics emphasize different aspects of performance,
+state how those differences will inform the interpretation rather than
+selecting only the metric that favors the proposed approach.
+Use the metric reference to credit an adopted definition~\cite{metric}.
+Describe any deviation from that definition and its effect on comparability.
+For a suitable numerical prediction task, a metric might be
+\ac{RMSE}. Define the residuals and aggregation used to calculate
+\ac{RMSE}, and choose a different metric if it better matches your task.
+
+\subsection{Baselines and Comparison Protocol}
+Select baselines that test the contribution you actually claim. Include a
+simple reference method where useful, and explain the relevance of more
+complex alternatives. Document whether baseline implementations are reused
+or reimplemented. Specify the settings used for each method and describe
+how the development budget is made comparable across approaches.
+Cite the baseline's original method~\cite{baseline} and any implementation
+dependency separately~\cite{software}. A comparison should make clear both
+what was evaluated and how it was implemented.
+
+State how many independent runs or evaluation units are used and why.
+Describe how variation is summarized and identify the unit over which an
+uncertainty interval is computed. Reference a suitable reproducibility
+protocol when one informs the design~\cite{reproducibility}, while reporting
+your actual settings rather than relying on the citation for those details.
+If reporting a \ac{CI}, state its confidence level, construction method,
+and sampling unit. Explain what the \ac{CI} describes rather than treating
+it as a generic measure of variation.
+
+\subsection{Quantitative Evaluation}
+\tabref{tab:results} demonstrates a compact results table.
+All entries are intentionally unfilled; dashes do not mean zero.
+Replace column headings with task-specific metrics and units, and indicate
+whether larger or smaller values are preferred.
+
+\input{tables/results}
+
+Describe the main observation supported by your measurements. Separate
+observations from explanations, and avoid claiming an improvement without
+appropriate evidence. If experiments have not been conducted, label this
+section as an evaluation plan and do not present anticipated outcomes as results.
+
+\subsection{Qualitative Evaluation}
+Use examples to explain behavior that a single numerical metric cannot
+capture. \figref{fig:qualitative} provides a two-panel placeholder.
+Include informative captions, matched conditions, and both successful and
+unsuccessful cases where relevant.
+
+\input{figures/qualitative}
+
+\subsection{Component Ablation}
+\tabref{tab:component_ablation} provides a component-removal study.
+Define a common reference configuration and remove one component at a
+time. Keep the input data, evaluation protocol, and unrelated settings
+fixed. Explain what replaces a disabled component so that each variant
+remains a valid method rather than a broken implementation.
+Use an experimental-design reference to motivate the controlled comparison
+where relevant~\cite{ablation}. Explain how the design separates the effect
+of the component from changes in the evaluation procedure.
+
+\input{tables/component_ablation}
+
+Interpret each comparison in terms of the component's intended role.
+Consider whether a change could arise from a different computational budget
+or training procedure rather than the component itself. If the two
+components interact, discuss what can be learned by removing both.
+Do not describe a component as necessary or beneficial until the measured
+results support that conclusion.
+
+\subsection{Design-Choice Ablation}
+\tabref{tab:design_ablation} illustrates a complementary comparison of
+alternative design choices. Unlike removing a component, this study changes
+how a component operates. Specify one choice at a time and hold the rest of
+the configuration fixed. Replace the generic options with meaningful
+alternatives for your method, such as an aggregation rule or representation.
+Link these alternatives to the method literature~\cite{representation,hybrid}
+so that the reader understands why they are meaningful choices to test.
+
+\input{tables/design_ablation}
+
+Report both the task metric and a relevant resource cost. Explain whether
+an apparent improvement requires additional computation, memory, or access
+to information. State the selection criterion before examining the test
+results, and use development data to choose a final configuration. Discuss
+whether multiple alternatives offer different, reasonable trade-offs.
+
+\subsection{Sensitivity and Operating Range}
+\figref{fig:sensitivity} provides a plot layout for a parameter sweep
+or robustness study. Its axes are intentionally empty; the figure contains
+no fabricated performance curve. Replace the labels with a named parameter
+and a defined metric, add units and values, and plot actual observations.
+Indicate uncertainty when repeated measurements are available.
+If an established robustness protocol guides the sweep, cite it at this
+point~\cite{robustness} and specify which parts of the protocol you follow.
+
+\input{figures/sensitivity}
+
+Choose a range that tests the operating assumptions of the method. Explain
+how the sampled settings were selected and why they are relevant to the
+intended application. Hold unrelated factors fixed, and report all tested
+settings rather than only a favorable subset. Identify any region where
+the method fails to produce a valid output and show how such failures are
+represented in the analysis.
+
+\subsection{Failure Cases and Summary of Evidence}
+Describe unsuccessful cases alongside successful ones. Connect each failure
+to a specific assumption or intermediate behavior, and distinguish an
+observed pattern from a speculative explanation. State what additional
+measurement would help identify the cause. Avoid using a few selected
+examples to claim a general failure rate.
+
+Close the evaluation by returning to its original questions. State which
+claims are supported, which remain uncertain, and which were not tested.
+Explain how the quantitative comparisons, qualitative examples, ablations,
+and sensitivity analysis complement one another. This synthesis should
+reflect your collected evidence rather than repeat a list of figure and
+table captions.
